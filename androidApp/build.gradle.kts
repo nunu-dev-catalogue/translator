@@ -2,6 +2,10 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlinSymbolProcessor)
+    alias(libs.plugins.daggerHilt)
+    alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.sqldelight)
 }
 
 android {
@@ -43,5 +47,10 @@ dependencies {
     implementation(projects.shared)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
+    implementation(libs.hilt)
+    ksp(libs.hilt.ksp)
+    ksp(libs.hilt.plugin)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.ktor.android)
     debugImplementation(libs.compose.ui.tooling)
 }
