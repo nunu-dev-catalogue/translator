@@ -21,7 +21,6 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-
     cocoapods {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
@@ -39,7 +38,6 @@ kotlin {
                 implementation(libs.ktor.core)
                 implementation(libs.ktor.serialization)
                 implementation(libs.ktor.kotlinx.serialization)
-                implementation(libs.sqldelight.native)
                 implementation(libs.kotlinx.datetime)
             }
         }
@@ -63,5 +61,21 @@ android {
     compileSdk = 34
     defaultConfig {
         minSdk = 28
+    }
+
+    packaging {
+        resources.excludes.apply {
+            add("META-INF/DEPENDENCIES")
+            add("META-INF/LICENSE")
+            add("META-INF/LICENSE.txt")
+            add("META-INF/license.txt")
+            add("META-INF/NOTICE")
+            add("META-INF/NOTICE.txt")
+            add("META-INF/notice.txt")
+            add("META-INF/ASL2.0")
+            add("META-INF/*.kotlin_module")
+            add("META-INF/versions/*")
+            add("/META-INF/{AL2.0,LGPL2.1}")
+        }
     }
 }
