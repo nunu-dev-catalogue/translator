@@ -39,6 +39,7 @@ kotlin {
                 implementation(libs.ktor.serialization)
                 implementation(libs.ktor.kotlinx.serialization)
                 implementation(libs.kotlinx.datetime)
+                implementation(libs.sqldelight.coroutines)
             }
         }
         val androidMain by getting {
@@ -52,6 +53,14 @@ kotlin {
                 implementation(libs.ktor.ios)
                 implementation(libs.sqldelight.native)
             }
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("TranslateDatabase") {
+            packageName.set("io.github.l2hyunwoo.translator")
         }
     }
 }
@@ -78,4 +87,8 @@ android {
             add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
+}
+
+task("testClasses").doLast {
+    println("This is a dummy testClasses task")
 }
