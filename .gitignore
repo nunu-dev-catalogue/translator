@@ -235,4 +235,6 @@ gradle-app.setting
 ### Gradle Patch ###
 # Java heap dump
 
+NetworkConstants.kt
+
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,intellij,gradle,android,xcode
