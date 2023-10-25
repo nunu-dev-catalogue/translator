@@ -4,13 +4,23 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import io.github.l2hyunwoo.translator.Greeting
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
+import io.github.l2hyunwoo.translator.android.core.presentation.Routes
 import io.github.l2hyunwoo.translator.android.core.theme.TranslatorTheme
+import io.github.l2hyunwoo.translator.android.translate.presentation.AndroidTranslateViewModel
+import io.github.l2hyunwoo.translator.android.translate.presentation.TranslateScreen
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingView(Greeting().greet())
+                    TranslateRoot()
                 }
             }
         }
@@ -28,14 +38,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    TranslatorTheme {
-        GreetingView("Hello, Android!")
+fun TranslateRoot() {
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = Routes.TRANSLATE
+    ) {
+        composable(Routes.TRANSLATE) {
+            val viewModel = hiltViewModel<AndroidTranslateViewModel>()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            TranslateScreen(state = state, onEvent = viewModel::onEvent)
+        }
     }
 }
