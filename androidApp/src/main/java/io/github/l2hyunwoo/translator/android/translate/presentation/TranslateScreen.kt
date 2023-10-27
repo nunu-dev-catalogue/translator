@@ -2,6 +2,7 @@ package io.github.l2hyunwoo.translator.android.translate.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -36,7 +37,8 @@ fun TranslateScreen(
             item {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     LanguageDropDown(
                         language = state.fromLanguage,
@@ -51,9 +53,11 @@ fun TranslateScreen(
                             onEvent(TranslateEvent.ChooseFromLanguage(it))
                         }
                     )
+                    Spacer(modifier = Modifier.weight(1f))
                     SwapLanguagesButton(
                         onClick = { onEvent(TranslateEvent.SwapLanguages) }
                     )
+                    Spacer(modifier = Modifier.weight(1f))
                     LanguageDropDown(
                         language = state.toLanguage,
                         isOpen = state.isChoosingToLanguage,

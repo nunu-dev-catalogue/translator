@@ -83,7 +83,7 @@ android {
             add("META-INF/notice.txt")
             add("META-INF/ASL2.0")
             add("META-INF/*.kotlin_module")
-            add("META-INF/versions/*")
+            add("META-INF/versions/**")
             add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }

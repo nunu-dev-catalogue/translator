@@ -35,11 +35,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
 }
 
@@ -48,10 +48,18 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
     implementation(libs.hilt)
+    implementation(libs.hilt.compose)
     ksp(libs.hilt.ksp)
     ksp(libs.hilt.plugin)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.ktor.android)
     implementation(libs.coil.compose)
+    implementation(libs.androidx.lifecycle.compose)
     debugImplementation(libs.compose.ui.tooling)
+}
+
+ksp {
+    hilt {
+        enableAggregatingTask = false
+    }
 }
