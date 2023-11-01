@@ -17,7 +17,7 @@ androidx-navigation = "2.7.4"
 dagger-hilt = "2.48.1"
 dagger-hilt-navigation-compose = "1.0.0"
 
-coil = "2.4.0"
+coil = "2.5.0"
 ktor = "2.3.5"
 sqldelight = "2.0.0"
 
