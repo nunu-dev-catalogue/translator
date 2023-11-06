@@ -179,7 +179,7 @@ fun TranslateScreen(
                         text = stringResource(
                             id = R.string.history
                         ),
-                        style = MaterialTheme.typography.h2
+                        style = MaterialTheme.typography.headlineMedium
                     )
                 }
             }
