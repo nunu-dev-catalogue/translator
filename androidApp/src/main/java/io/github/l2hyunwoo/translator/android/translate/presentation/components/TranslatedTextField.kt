@@ -23,7 +23,7 @@ import io.github.l2hyunwoo.translator.android.core.theme.LightBlue
 import io.github.l2hyunwoo.translator.core.presentation.UiLanguage
 
 @Composable
-private fun TranslatedTextField(
+fun TranslatedTextField(
     fromText: String,
     toText: String,
     fromLanguage: UiLanguage,

@@ -20,7 +20,7 @@ import io.github.l2hyunwoo.translator.android.R
 import io.github.l2hyunwoo.translator.android.core.theme.LightBlue
 
 @Composable
-private fun IdleTranslateTextField(
+fun IdleTranslateTextField(
     fromText: String,
     isTranslating: Boolean,
     onTextChange: (String) -> Unit,
