@@ -2,6 +2,7 @@
 
 package io.github.l2hyunwoo.translator.android.translate.presentation
 
+import android.speech.tts.TextToSpeech
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -24,8 +25,10 @@ import io.github.l2hyunwoo.translator.android.R
 import io.github.l2hyunwoo.translator.android.translate.presentation.components.LanguageDropDown
 import io.github.l2hyunwoo.translator.android.translate.presentation.components.SwapLanguagesButton
 import io.github.l2hyunwoo.translator.android.translate.presentation.components.TranslateTextField
+import io.github.l2hyunwoo.translator.android.translate.presentation.components.rememberTextToSpeech
 import io.github.l2hyunwoo.translator.translate.presentation.TranslateEvent
 import io.github.l2hyunwoo.translator.translate.presentation.TranslateState
+import java.util.Locale
 
 @Composable
 fun TranslateScreen(
@@ -87,6 +90,7 @@ fun TranslateScreen(
             item(key = "translate_text_field") {
                 val clipboardManager = LocalClipboardManager.current
                 val keyboardController = LocalSoftwareKeyboardController.current
+                val tts = rememberTextToSpeech()
                 TranslateTextField(
                     fromText = state.fromText,
                     toText = state.toText,
@@ -116,7 +120,13 @@ fun TranslateScreen(
                         onEvent(TranslateEvent.CloseTranslation)
                     },
                     onSpeakerClick = {
-                        // TODO TTS Feature
+                        tts.language = state.toLanguage.toLocale() ?: Locale.KOREAN
+                        tts.speak(
+                            state.toText ?: "",
+                            TextToSpeech.QUEUE_FLUSH,
+                            null,
+                            null
+                        )
                     },
                     onTextFieldClick = {
                         onEvent(TranslateEvent.EditTranslation)
