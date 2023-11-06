@@ -23,7 +23,7 @@ fun TranslateTextField(
     toLanguage: UiLanguage,
     onTranslateClick: () -> Unit,
     onTextChange: (String) -> Unit,
-    onCopyClick: () -> Unit,
+    onCopyClick: (String) -> Unit,
     onCloseClick: () -> Unit,
     onSpeakerClick: () -> Unit,
     onTextFieldClick: () -> Unit,
