@@ -18,7 +18,7 @@ dagger-hilt = "2.48.1"
 dagger-hilt-navigation-compose = "1.1.0"
 
 coil = "2.5.0"
-ktor = "2.3.6"
+ktor = "2.3.7"
 sqldelight = "2.0.0"
 
 [libraries]
