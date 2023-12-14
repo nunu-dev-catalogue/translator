@@ -19,7 +19,7 @@ dagger-hilt-navigation-compose = "1.1.0"
 
 coil = "2.5.0"
 ktor = "2.3.7"
-sqldelight = "2.0.0"
+sqldelight = "2.0.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
