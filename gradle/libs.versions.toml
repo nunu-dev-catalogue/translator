@@ -15,7 +15,7 @@ compose-bom = "2024.02.00"
 androidx-activityCompose = "1.8.2"
 androidx-navigation = "2.7.7"
 dagger-hilt = "2.51"
-dagger-hilt-navigation-compose = "1.1.0"
+dagger-hilt-navigation-compose = "1.2.0"
 
 coil = "2.6.0"
 ktor = "2.3.8"
